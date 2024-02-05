@@ -1,0 +1,55 @@
+{% extends 'abonados/home.html' %}
+{% block contenido %}
+
+<div class="container-fluid">
+
+    <h1 class="h3 mb-2 text-gray-800">Servicios contratados por abonado.</h1>
+    <p class="mb-4">Aquí se muestran los servicios activos en el abonado.</p>
+
+    <!-- Formulario de Búsqueda 
+    <div class="search-form-container">
+        <form class="user" action="{% url 'buscarServicios' %}" method="get">
+            {% csrf_token %}
+            <div class="form-group d-flex align-items-center">
+                <input type="text" class="form-control" id="servicios" placeholder="Buscar servicio." style="margin-right: 10px;">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
+    </div> -->
+
+    <!-- DataTales Servicios -->
+    <div class="services-table-container">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Listado de Servicios</h6>
+                <h6 class="m-0 font-weight-bold text-secondary ">{{ mensaje }}</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>N Abonado</th>
+                                <th>Servicio</th>
+                                <th>Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in servicios %}
+                            <!-- Aqui ira el numero de abonado dependiendo del login -->
+                            <tr>
+                                <td>{{ s.nAbonado }}</td>
+                                <td>{{ s.servicio }}</td>
+                                <td>{{ s.servicioMonto }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock contenido %}
